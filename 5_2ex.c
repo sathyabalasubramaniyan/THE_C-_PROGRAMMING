@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<ctype.h>
-  
+
+//FUNCTION DECLARATION
 void  getfloat(float *pt);
+
 
 int main(void)
 {
@@ -11,6 +13,7 @@ printf("\nRES :%f",p);
 return 0;
 }
 
+//FUNCTION DEFINITION
 void  getfloat(float *pt)
 {
    int ch,sign=1;
@@ -35,16 +38,16 @@ void  getfloat(float *pt)
     for(*pt=0;isdigit(ch)||ch=='.';) //check if it is a number
     {
 ///printf("\nt:%f",t);
-     if(flag==1)
+     if(flag==1) // if flag =1 , increment the pow to calculate the fractonal part
      {
       pow++;
      }
-      if(isdigit(ch)) 
+      if(isdigit(ch))  //if it is a number 
      {
       *pt=(*pt)*10.0+(ch-'0');
        ch=getchar();   
      }
-    else if (ch=='.') //if it is a decimal part
+    else if (ch=='.') //if it is a decimal part we enable the flag 
     {
       flag=1;
       ch=getchar();
@@ -52,12 +55,12 @@ void  getfloat(float *pt)
   // printf("t=%f",t*sign);
    }
   }
- if(ch=='\n')
+ if(ch=='\n') // if it is a enter character 
  {
  *pt=(*pt)*sign;
 //printf("pt:%f",*pt);
 //printf("pow:%d",pow);
- for(;pow!=0;pow--)
+ for(;pow!=0;pow--) // to calculate fraction part 
  {
  (*pt)=(*pt)/10;// point 
  }
